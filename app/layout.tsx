@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang='en' suppressHydrationWarning>
-      <body className="">
-        <Providers>
-          <Navbar />
-          <main className='container py-10'>{children}</main>
-        </Providers>
+        <body className="">
+          <Providers>
+            <Navbar />
+            <main className='container py-10'>{children}</main>
+          </Providers>
         </body>
       </html>
     </ClerkProvider>
