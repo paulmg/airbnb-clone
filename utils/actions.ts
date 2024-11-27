@@ -1,6 +1,6 @@
 'use server'
 
-import { imageSchema, profileSchema, validateWithZodSchema } from '@/utils/schemas';
+import { imageSchema, profileSchema, propertySchema, validateWithZodSchema } from '@/utils/schemas';
 import { clerkClient, currentUser } from '@clerk/nextjs/server';
 import db from '@/utils/db';
 import { redirect } from 'next/navigation';
@@ -126,4 +126,18 @@ export const updateProfileImageAction = async (prevState: any, formData: FormDat
   }
 
   return { message: 'Profile image updated'}
+}
+
+export const createPropertyAction = async (prevState: any, formData: FormData) : Promise<{message: string}> => {
+  const user = await currentUser();
+
+  try {
+    const rawData = Object.fromEntries(formData);
+    const validatedFields = validateWithZodSchema(propertySchema, rawData);
+
+  } catch (error) {
+    return renderError(error);
+  }
+
+  redirect('/');
 }
