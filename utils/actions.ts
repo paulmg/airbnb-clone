@@ -259,3 +259,4 @@ export const fetchPropertyDetails = async (id: string) => {
     },
   });
 };
+
